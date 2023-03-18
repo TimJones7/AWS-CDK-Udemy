@@ -1,0 +1,27 @@
+Init new cdk app:
+  > cdk init app --language typescript
+
+Build the output files:
+  > cdk synth
+
+Bootstrap the cdk app: #this only gets ran once
+  > cdk bootstrap 
+  - This deploys the application to AWS
+
+Deploy the resources to aws:
+  > cdk deploy
+  > cdk deploy --all  #this will deploy all stacks
+  > cdk deploy StackName #this only deploys the stack StackName
+  > cdk deploy --parameters duration=8    #this is how to pass parameters in
+
+List all stacks:
+  > cdk list
+
+Show stack drift:
+  > cdk diff
+
+Delete Stacks:
+  > cdk destroy StackName
+
+Tell us if there are problems with errors:
+  > cdk doctor
