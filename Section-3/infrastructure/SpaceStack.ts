@@ -4,6 +4,7 @@ import {Code, Function as LambdaFunction, Runtime} from 'aws-cdk-lib/aws-lambda'
 import { join } from 'path';
 import { LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { GenericTable } from './GenericTable';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 
 
 export class SpaceStack extends Stack {
@@ -25,6 +26,17 @@ export class SpaceStack extends Stack {
             handler: 'hello.main'
         });
 
+
+        const helloLambdaWebpack = new LambdaFunction(this, 'hello-lambda-webpack', {
+            runtime: Runtime.NODEJS_14_X,
+            code: Code.fromAsset(join(__dirname, '..', 'build', 'nodeHelloLambda')),
+            handler: 'nodeHelloLambda.handler'
+        });
+
+        const helloLambdaNodeJs = new NodejsFunction(this, 'Node-Lambda', {
+            entry: (join(__dirname, '..', 'service', 'node-lambda', 'hello.ts')),
+            handler: 'handler'
+        });
 
 
         // Hello API lambda integration

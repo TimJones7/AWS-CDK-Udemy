@@ -5,8 +5,7 @@ Build the output files:
   > cdk synth
 
 Bootstrap the cdk app: #this only gets ran once
-  > cdk bootstrap 
-  - This deploys the application to AWS
+  > cdk bootstrap # this will provision all resources needed in order to deploy apps
 
 Deploy the resources to aws:
   > cdk deploy
