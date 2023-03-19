@@ -5,7 +5,8 @@ import { join } from 'path';
 import { LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { GenericTable } from './GenericTable';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
-
+import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { SESV2 } from 'aws-sdk';
 
 export class SpaceStack extends Stack {
 
@@ -19,13 +20,11 @@ export class SpaceStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps){
         super(scope, id, props)
 
-
-        const helloLambda = new LambdaFunction(this, 'hello-lambda', {
-            runtime: Runtime.NODEJS_14_X,
-            code: Code.fromAsset(join(__dirname, '..', 'service', 'hello')),
-            handler: 'hello.main'
-        });
-
+        // const helloLambda = new LambdaFunction(this, 'hello-lambda', {
+        //     runtime: Runtime.NODEJS_14_X,
+        //     code: Code.fromAsset(join(__dirname, '..', 'service', 'hello')),
+        //     handler: 'hello.main'
+        // });
 
         const helloLambdaWebpack = new LambdaFunction(this, 'hello-lambda-webpack', {
             runtime: Runtime.NODEJS_14_X,
@@ -38,10 +37,14 @@ export class SpaceStack extends Stack {
             handler: 'handler'
         });
 
+        const s3ListPolicy = new PolicyStatement();
+        s3ListPolicy.addActions('s3:ListAllMyBuckets');
+        s3ListPolicy.addResources('*');
+        helloLambdaNodeJs.addToRolePolicy(s3ListPolicy);
 
         // Hello API lambda integration
         // This is how to link a lambda with an api gateway
-        const helloLambdaIntegration = new LambdaIntegration(helloLambda);
+        const helloLambdaIntegration = new LambdaIntegration(helloLambdaNodeJs);
         // Provide the source
         const helloLambdaResource = this.api.root.addResource('hello');
         // Then provide the method

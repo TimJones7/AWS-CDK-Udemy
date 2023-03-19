@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/ebbb9ef4e4f55b6df884b5546f2e3db0d2b2e4408d2b263e3022cb9aea13d26a.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/479abb1fe2a72d5f62092f3983d9a82bf3cd46b80f2c563c75208de67f871e73.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -55,7 +55,7 @@
         "/Space-finder/SpaceApi/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SpaceApiDeploymentA2B9E765579cfc1b7d531ddf1d8acca58732de62"
+            "data": "SpaceApiDeploymentA2B9E76576e83a1629761855af3f69b0e3bb03c6"
           }
         ],
         "/Space-finder/SpaceApi/DeploymentStage.prod/Resource": [
@@ -108,18 +108,6 @@
             "data": "SpacesTable9779E6B3"
           }
         ],
-        "/Space-finder/hello-lambda/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "hellolambdaServiceRoleEB65A32D"
-          }
-        ],
-        "/Space-finder/hello-lambda/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "hellolambdaDE420C60"
-          }
-        ],
         "/Space-finder/hello-lambda-webpack/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -136,6 +124,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "NodeLambdaServiceRole9CB36CAC"
+          }
+        ],
+        "/Space-finder/Node-Lambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NodeLambdaServiceRoleDefaultPolicy9F4D07DD"
           }
         ],
         "/Space-finder/Node-Lambda/Resource": [

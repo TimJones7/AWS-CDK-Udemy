@@ -19,6 +19,7 @@
     "@types/webpack": "^5.28.0",
     "aws-cdk": "^2.69.0",
     "aws-cdk-lib": "^2.69.0",
+    "aws-sdk": "^2.1338.0",
     "babel-jest": "^29.5.0",
     "constructs": "^10.1.281",
     "esbuild": "^0.17.12",
