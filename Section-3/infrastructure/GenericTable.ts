@@ -9,11 +9,10 @@ export class GenericTable {
     private stack: Stack;
     private table: Table;
 
-    public constructor(name: string, primaryKey: string, stack: Stack, table: Table){
+    public constructor(name: string, primaryKey: string, stack: Stack){
         this.name = name;
         this.primaryKey = primaryKey;
         this.stack = stack;
-        this.table = table;
         this.initialize();
     }
 
@@ -25,7 +24,8 @@ export class GenericTable {
             partitionKey: {
                 name: this.primaryKey,
                 type: AttributeType.STRING
-            }
+            },
+            tableName: this.name
         });
     }
 }

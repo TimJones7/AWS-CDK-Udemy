@@ -368,6 +368,54 @@
               "version": "2.69.0"
             }
           },
+          "Spaces-Table": {
+            "id": "Spaces-Table",
+            "path": "Space-finder/Spaces-Table",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Space-finder/Spaces-Table/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DynamoDB::Table",
+                  "aws:cdk:cloudformation:props": {
+                    "keySchema": [
+                      {
+                        "attributeName": "spaceId",
+                        "keyType": "HASH"
+                      }
+                    ],
+                    "attributeDefinitions": [
+                      {
+                        "attributeName": "spaceId",
+                        "attributeType": "S"
+                      }
+                    ],
+                    "provisionedThroughput": {
+                      "readCapacityUnits": 5,
+                      "writeCapacityUnits": 5
+                    },
+                    "tableName": "Spaces-Table"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_dynamodb.CfnTable",
+                  "version": "2.69.0"
+                }
+              },
+              "ScalingRole": {
+                "id": "ScalingRole",
+                "path": "Space-finder/Spaces-Table/ScalingRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.69.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_dynamodb.Table",
+              "version": "2.69.0"
+            }
+          },
           "hello-lambda": {
             "id": "hello-lambda",
             "path": "Space-finder/hello-lambda",
@@ -465,7 +513,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "7d0d8cd57a6c16e0b4ca14d79e2138293bd420ccb55031d77e4c73292e8c07e9.zip"
+                      "s3Key": "9dcd4c1b89a841b15056d361334412711d42f65c05f0139c4acd1093a1215915.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
